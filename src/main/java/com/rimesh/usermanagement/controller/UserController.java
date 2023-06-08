@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class UserController {
-
+    @Autowired
     public UserService userService;
 
     /**
@@ -30,6 +30,13 @@ public class UserController {
     public User addBook(@RequestBody User user) {
         return userService.saveUser(user);
     }
+
+    @GetMapping("/getUser/{id}")
+    public  User getSingleUser(@PathVariable("id") Integer userId){
+        return  userService.getUser(userId);
+    }
+
+
 
     /**
      * Retrieves all users from the system.

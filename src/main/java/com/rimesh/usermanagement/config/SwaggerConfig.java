@@ -13,4 +13,5 @@ public class SwaggerConfig {
                 .packagesToScan("com.rimesh.usermanagement.controller") // Specify the package(s) to scan for APIs
                 .build();
     }
+
 }

@@ -10,11 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
-    private UserRepo userRepo;
+    public  UserRepo userRepo;
 
     /**
      * Saves a user object in the repository.
@@ -27,11 +28,22 @@ public class UserServiceImpl implements UserService {
         return userRepo.save(user);
     }
 
+    public User getUser(Integer userId) {
+        User user = userRepo.findByUserId(userId);
+        if (user != null) {
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+
     /**
      * Retrieves a list of all user objects from the repository.
      *
      * @return A list of all user objects.
      */
+
     @Override
     public List<User> getAllUser() {
         return userRepo.findAll();
